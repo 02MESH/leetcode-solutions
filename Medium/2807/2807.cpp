@@ -16,7 +16,7 @@ ListNode* insertGreatestCommonDivisors(ListNode* head) {
 
         //Create a new node and set the next pointer to the node
         ListNode* newNode = new ListNode({result, node});
-            
+
         //Establish the connection
         travelNode->next = newNode;
 
