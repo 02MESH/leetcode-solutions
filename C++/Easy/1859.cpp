@@ -9,19 +9,22 @@ std::string sortSentence(std::string s) {
         char currentCharacter = s[i];
         if(std::isalpha(currentCharacter)) {
             temp += currentCharacter;
-        } else if (std::isdigit(currentCharacter) && std::isspace(temp[i+1])) {
+        } else if (std::isdigit(currentCharacter) && (std::isspace(s[i+1]) || s[i+1] == '\0')) {
             int index = currentCharacter - '0';
-            temp += s[i];
-            values.insert({index, temp});
+            values.insert(std::make_pair(index, temp));
             i++;
             temp = "";
         }
     }
-    return "haha";
+
+    for(int i = 0; values.size() > i; i++) {
+        auto search = values.find(i+1);
+        temp += search->second + (i + 1 == values.size() ? "" : " ");
+    }
+    return temp;
 }
 
 int main() {
-    sortSentence("haha1 haha2");
-    std::cout<<"Hello World";
+    std::cout<<sortSentence("Myself2 Me1 I4 and3");
     return 1;
 }
