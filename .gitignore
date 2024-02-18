@@ -3,3 +3,5 @@
 
 #Ignore .exe files
 *.exe
+.vs/
+CppProperties.json
