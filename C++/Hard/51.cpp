@@ -1,3 +1,4 @@
+// Incomplete
 #include <algorithm>
 #include <cctype> //https://en.cppreference.com/w/cpp/header/cctype
 #include <cmath>
@@ -16,21 +17,25 @@
 
 using namespace std;
 
-bool isPalindrome(int x) {
-  if(x < 0) return false;
-  long temp = x;
-  long reversed = 0;
-  while(temp > 0) {
-    int digit = temp % 10;
-    reversed = (reversed * 10) + static_cast<int>(temp % 10);
-    temp /= 10;
+class Solution {
+public:
+  vector<vector<string>> solveNQueens(int n) {
+    unordered_set<pair<int, int>> columns;
+    unordered_set<pair<int, int>> posDiag;
+    unordered_set<pair<int, int>> negDiag;
+
+    vector<vector<string>> res;
+    vector<string> board(n, string(n, '.'));
   }
-  std::cout<<reversed;
-  return reversed==x;
+
+private:
+  void backtrack(int r, int n, unordered_set<int> &col,
+                 unordered_set<int> &posDiag, unordered_set<int> &negDiag,
+                 vector<string> &board, vector<vector<string>> &res) {}
 }
 
 int main() {
   setvbuf(stdout, nullptr, _IONBF, 0); // For debugging the buffer correctly)
-  std::cout<<std::boolalpha<<isPalindrome(121)<<std::endl;
+
   return 1;
 }
