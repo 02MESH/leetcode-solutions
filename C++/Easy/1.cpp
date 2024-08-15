@@ -8,7 +8,7 @@
 using namespace std;
 
 vector<int> twoSum(vector<int> &nums, int target) {
-  setvbuf(stdout, nullptr, _IONBF, 0); // For debugging the buffer correctly)
+  setvbuf(stdout, nullptr, _IONBF, 0); // (For debugging the buffer correctly)
   unordered_map<int, int> numbers;
   numbers.insert({nums[0], 0});
   for (int i = 1; nums.size() > i; i++) {
@@ -22,7 +22,7 @@ vector<int> twoSum(vector<int> &nums, int target) {
 }
 
 int main() {
-  setvbuf(stdout, nullptr, _IONBF, 0); // For debugging the buffer correctly)
+  setvbuf(stdout, nullptr, _IONBF, 0); // (For debugging the buffer correctly)
   vector<int> test{3, 2, 4};
   test = twoSum(test, 6);
   for (const int x : test)

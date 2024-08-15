@@ -21,7 +21,6 @@ bool isPalindrome(int x) {
   long temp = x;
   long reversed = 0;
   while(temp > 0) {
-    int digit = temp % 10;
     reversed = (reversed * 10) + static_cast<int>(temp % 10);
     temp /= 10;
   }
