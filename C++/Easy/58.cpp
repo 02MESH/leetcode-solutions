@@ -1,23 +1,29 @@
-//My solution
+#include <algorithm>
+#include <cctype> //https://en.cppreference.com/w/cpp/header/cctype
+#include <cstdio> //https://github.com/mfussenegger/nvim-dap/issues/1061#issuecomment-1773218073
+#include <cstring>
+#include <iostream>
+#include <string>
+
+using namespace std;
+
 int lengthOfLastWord(string s) {
-    int counter {0};
-    for(int i = s.size()-1; i >= 0; i--) {
-        if(isalnum(s[i])) {
-            for(int j = i; j >= 0 && isalnum(s[j]); j--)
-                counter++;
-            break;
-        }
+  int result = 0;
+  bool flag = false;
+  for (int i = s.size() - 1; i >= 0; i--) {
+    if (flag && !isalpha(s[i]))
+      break;
+    else if (isalpha(s[i])) {
+      result++;
+      flag = true;
     }
-    return counter;
+  }
+  return result;
 }
 
-//Better solution in the sense that it saves a bit of space
-int lengthOfLastWord(string s) {
-    int counter {0};
-    bool flag {false};
-    for(int i = s.size()-1; i >= 0; i--) {
-        if(!isalnum(s[i]) && flag) return counter;
-        else if (isalnum(s[i])) {counter++; flag = true;}
-    }
-    return counter;
+int main() {
+  setvbuf(stdout, nullptr, _IONBF, 0); // For debugging the buffer correctly)
+  string test = "Hello World";
+  cout << lengthOfLastWord(test) << endl;
+  return 1;
 }
