@@ -16,17 +16,17 @@
 
 using namespace std;
 
-int longestAlternatingSubarray(vector<int>& nums, int threshold) {
-  int count = 0;
-  for(int i = 0; nums.size() > i; i++) {
-
+int differenceOfSums(int n, int m) {
+  int divisible = 0, non_divisible = 0;
+  for(int i = 1; n >= i; i++) {
+    if(i % m == 0) divisible += i;
+    else non_divisible += i;
   }
-  return count;
+  return non_divisible - divisible;
 }
 
 int main() {
   setvbuf(stdout, nullptr, _IONBF, 0); //For debugging the buffer correctly)
-  vector<int> nums {2,3,4,5}; int threshold = 4;
-  cout<<longestAlternatingSubarray(nums, 4);
+  std::cout<<differenceOfSums(5, 1);
   return 1;
 }
