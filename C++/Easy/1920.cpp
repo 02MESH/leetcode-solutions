@@ -7,11 +7,9 @@
 using namespace std;
 
 vector<int> buildArray(vector<int> &nums) {
-  vector<int> result;
-  for (int i = 0; nums.size() > i; i++) {
-    int temp = nums[i];
-    result[i] = nums[temp];
-  }
+  vector<int> result (nums.size() , 0);
+  for (int i = 0; nums.size() > i; i++)
+    result[i] = nums[nums[i]];
   return result;
 }
 
@@ -19,7 +17,6 @@ int main() {
   setvbuf(stdout, nullptr, _IONBF, 0); // For debugging the buffer correctly)
   vector<int> test{0, 2, 1, 5, 3, 4};
   auto haha = buildArray(test);
-  cout<<"TEST"<<endl;
   for (int x : haha)
     cout << x << ", ";
   return 1;
