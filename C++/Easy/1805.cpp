@@ -1,34 +1,30 @@
-//Initial solution. However, this is wrong
+#include <iostream>
+#include <cctype> //https://en.cppreference.com/w/cpp/header/cctype
+#include <cstdio> //https://github.com/mfussenegger/nvim-dap/issues/1061#issuecomment-1773218073
+#include <cstring>
+#include <string>
+#include <unordered_set>
+
+using namespace std;
+
 int numDifferentIntegers(string word) {
-    std::unordered_map<long long, int> map;
-    for(int i = 0; word.size() > i; i++) {
-        if(isdigit(word[i])) {
-            std::string num;
-            for(int j = i+1; word.size() > i && isdigit(word[i]); i++) {
-                num.push_back(word[i]);
-            }
-            long long convert = std::stoi(num);
-            map[convert]++;
-        }
+  unordered_set<string> result;
+  for (int i = 0; word.size() > i; i++) {
+    if (isdigit(word[i])) {
+      while (word.size() > i && word[i] == '0')
+        i++;
+      string digit = "";
+      while (word.size() > i && isdigit(word[i]))
+        digit += word[i++];
+      result.insert(digit);
     }
-    int counter = 0;
-    for(auto x : map) counter++;
-    return counter;
+  }
+  return result.size();
 }
 
-//The better solution is
-int numDifferentIntegers(string word) {
-    std::unordered_set<std::string> result;
-    for(int i = 0; word.size() > i; i++) {
-        if(isdigit(word[i])) {
-            std::string temp;
-            while(word[i] == '0' && word.size() > i) i++;
-            while(isdigit(word[i]) && word.size() > i) {
-                temp.push_back(word[i]);
-                i++;
-            }
-            result.insert(temp);
-        }
-    }
-    return result.size();
+int main() {
+  setvbuf(stdout, nullptr, _IONBF, 0); // For debugging the buffer correctly)
+  string test = "1234bc34d8ef34";
+  cout<< numDifferentIntegers(test);
+  return 1;
 }
