@@ -8,13 +8,10 @@
 using namespace std;
 
 vector<int> twoSum(vector<int> &nums, int target) {
-  setvbuf(stdout, nullptr, _IONBF, 0); // (For debugging the buffer correctly)
   unordered_map<int, int> numbers;
-  numbers.insert({nums[0], 0});
-  for (int i = 1; nums.size() > i; i++) {
-    int current = nums[i];
-    int difference = target - current;
-    if (auto search = numbers.find(difference); search != numbers.end())
+  for (int i = 0; nums.size() > i; i++) {
+    int complement = target - nums[i];
+    if (auto search = numbers.find(complement); search != numbers.end())
       return {search->second, i};
     numbers.insert({nums[i], i});
   }
